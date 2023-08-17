@@ -1,0 +1,34 @@
+name: Dynamic matrix demo
+
+on:
+  push:
+    branches:
+      - demo
+
+jobs:
+  build-matrix:
+    steps:
+      # Checkout repo
+      - uses: actions/checkout@v2
+        # Setup python
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - name: Run script to generate matrix
+        run: |
+          python3 scripts/generate-matrix.py
+    outputs:
+      matrix: ${{ steps.generate-matrix.outputs.dynamic_list }}
+
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+      number: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
+    steps:
+      - run: |
+          for i in ${{ matrix.number }}; do
+            echo "Number: $i"
+          done
