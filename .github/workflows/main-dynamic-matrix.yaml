@@ -32,6 +32,6 @@ jobs:
         number: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
     steps:
       - run: |
-          for i in {1.."${{ matrix.number}}"}; do
+          for i in {1..${{ matrix.number}}}; do
             echo "Hello $i"
           done

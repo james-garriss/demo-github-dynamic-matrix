@@ -17,7 +17,7 @@ def get_random_int(lowest=0, highest=20):
 
 
 output_list = []
-for i in range(5, get_random_int(15, 30)):
+for i in range(0, get_random_int(5, 10)):
     output_list.append(get_random_int(lowest=1))
 
 print("Dynamic matrix: " + str(output_list))
