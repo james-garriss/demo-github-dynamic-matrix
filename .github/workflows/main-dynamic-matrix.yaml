@@ -3,7 +3,7 @@ name: Dynamic matrix demo
 on:
   push:
     branches:
-      - demo
+      - main
 
 jobs:
   build-matrix:
