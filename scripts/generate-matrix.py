@@ -27,4 +27,5 @@ if "GITHUB_OUTPUT" in os.environ:
     # Write to GITHUB_OUTPUT
     with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
         print(f"dynamic_list={str(output_list)}", file=fh)
-        print(fh.read())
+    with open('/path/to/my/file.txt', 'r') as f:
+        print(f.read())
